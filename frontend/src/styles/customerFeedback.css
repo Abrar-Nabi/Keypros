@@ -1,0 +1,84 @@
+.feedback-section {
+    text-align: center;
+    padding: 10px 0px;
+    /* background-color: #f8f8f8; */
+    /* background: url("../assets/images/bg-1.png") no-repeat center center/cover; */
+  }
+  
+  .feedback-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #000000;
+  }
+  
+  .feedback-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .feedback-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .stars {
+    color: #c32026;
+    margin-bottom: 10px;
+  }
+  
+  .star {
+    font-size: 18px;
+  }
+  
+  .review-text {
+    font-size: 16px;
+    font-style: italic;
+  }
+  
+  .write-review-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    background: #c32026;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .write-review-btn:hover {
+    background: #a5181e;
+  }
+  
+  .icon {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feedback-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

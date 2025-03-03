@@ -1,0 +1,74 @@
+/* ======= ABOUT US SECTION ======= */
+.about-section {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: url("../assets/images/bg-2.png") no-repeat center center/cover; */
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .text {
+    flex: 1 1.5;
+    padding-right: 50px;
+    text-align: justify;
+    padding-bottom: 100px;
+}
+  
+  .text h2 {
+    font-size: 36px;
+    color: #c32026;
+  }
+  
+  .text p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .image {
+    flex: 1.5;
+  }
+  
+  .image img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* ======= RESPONSIVE DESIGN ======= */
+  @media (max-width: 768px) {
+    .home-section {
+      justify-content: center;
+      text-align: center;
+      padding: 10%;
+    }
+  
+    .hero-text p {
+      font-size: 24px;
+    }
+  
+    .small-text {
+      font-size: 16px;
+    }
+  
+    .subtext {
+      font-size: 20px;
+    }
+  
+    .container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .text {
+      margin: 10px;
+      /* margin-bottom: 20px; */
+      padding-right: 0;
+      padding-bottom: 0;
+  }
+  }
+  

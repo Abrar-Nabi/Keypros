@@ -1,0 +1,71 @@
+.services {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .services-heading {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 15px;
+  }
+  
+  .service-card {
+    background-color: #d32f2f; /* Red background */
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 280px; /* Set a smaller width */
+    height: 350px; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures spacing is even */
+  }
+  
+  .service-title {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2); /* Different title background */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  
+  .service-description {
+    font-size: 16px;
+    flex-grow: 1; /* Pushes button to bottom */
+    margin: 30px 0;
+    text-align: justify;
+  }
+  
+  .service-btn {
+    background-color: white;
+    color: #d32f2f;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%; /* Full-width button */
+  }
+  
+  .service-btn:hover {
+    background-color: #d32f2f;
+    color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+  }
+  

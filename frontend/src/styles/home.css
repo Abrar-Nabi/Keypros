@@ -1,0 +1,184 @@
+/* Remove margin & padding issues */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+}
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("../assets/images/Keypros(4).png") no-repeat center center/cover;
+  background-attachment: fixed; /* Enables parallax effect */
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Keep text on the left */
+  padding-left: 50px;
+  overflow-x: hidden; /* Fix unwanted horizontal scroll */
+}
+
+.overlay {
+  position: absolute;
+  left: 50px; /* Keep it on the left */
+  top: 50%;
+  transform: translateY(-50%); /* Center it vertically */
+  background: rgba(0, 0, 0, 0.6); /* Low opacity black */
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.text-container {
+  color: white;
+  text-align: left;
+}
+
+h1 {
+  font-size: 57px;
+  font-weight: bold;
+}
+
+.red-k {
+  color: #c32026;
+}
+
+.subtext {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.description {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.call-btn, .quote-btn {
+  font-size: 18px;
+  padding: 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%; /* Full width */
+  text-align: center;
+  transition: 0.3s;
+}
+
+.call-btn {
+  background-color: #ca2026;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.quote-btn {
+  background-color: white;
+  color: #ca2026;
+}
+
+.call-btn:hover, .quote-btn:hover {
+  opacity: 0.8;
+}
+
+/* Quote Form Modal */
+.quote-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.quote-form h2 {
+  margin-bottom: 10px;
+}
+
+.quote-form input, .quote-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn, .close-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-color: #ca2026;
+  color: white;
+}
+
+.close-btn {
+  background-color: grey;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home {
+    justify-content: center;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .overlay {
+    position: relative;
+    left: 0;
+    top: 10%;
+    transform: none; /* Remove vertical centering */
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .subtext {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .call-btn, .quote-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
