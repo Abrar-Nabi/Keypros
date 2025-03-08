@@ -17,62 +17,95 @@ const QuoteForm = ({ onClose }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent any unintended event behavior
-    setStatus("loading");
-  
-    try {
-      const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        setStatus("success");
-        setTimeout(() => {
-          setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
-          onClose(); // Close after animation
-          setStatus("idle");
-        }, 2000);
-      } else {
+  e.preventDefault();
+  e.stopPropagation(); // Prevent any unintended event behavior
+  setStatus("loading");
+
+  try {
+    const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus("success");
+      setTimeout(() => {
+        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+        onClose(); // Close after animation
         setStatus("idle");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+      }, 2000);
+    } else {
       setStatus("idle");
     }
-  };
-  
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    setStatus("idle");
+  }
+};
+
 
   return (
     <div className="quote-modal">
       <div className="quote-form-container">
-        <h2>Request a Quote</h2>
+        <h2 className="quote-form-title">Request a Quote</h2>
 
         {status === "loading" && (
-          <div className="loading-screen">
-            <div className="spinner"></div>
-            <p>Sending your request...</p>
+          <div className="quote-loading-screen">
+            <div className="quote-spinner"></div>
+            <p className="quote-loading-text">Sending your request...</p>
           </div>
         )}
 
         {status === "success" && (
-          <div className="success-screen">
-            <FaCheckCircle className="success-icon" />
-            <p>Quote request sent!</p>
+          <div className="quote-success-screen">
+            <FaCheckCircle className="quote-success-icon" />
+            <p className="quote-success-text">Quote request sent!</p>
           </div>
         )}
 
         {status === "idle" && (
           <form onSubmit={handleSubmit} className="quote-form">
-            <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-            <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
-            <input type="tel" name="phone" placeholder="Your Phone Number" value={formData.phone} onChange={handleChange} required />
-            <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
+            <input
+              type="text"
+              name="name"
+              className="quote-input"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              className="quote-input"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              className="quote-input"
+              placeholder="Your Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="message"
+              className="quote-textarea"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
             
-            <button type="submit" disabled={status === "loading"}>{status === "loading" ? "Sending..." : "Submit Request"}</button>
-            <button className="close-btn" type="button" onClick={onClose}>Close</button>
+            <button type="submit" className="quote-submit-btn" disabled={status === "loading"}>
+              {status === "loading" ? "Sending..." : "Submit Request"}
+            </button>
+            <button className="quote-close-btn" type="button" onClick={onClose}>Close</button>
           </form>
         )}
       </div>
