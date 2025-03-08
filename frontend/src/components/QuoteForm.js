@@ -24,7 +24,7 @@ const QuoteForm = ({ onClose }) => {
   setStatus("loading");
 
   try {
-    const response = await fetch("https://your-render-api.com/api/quote/submit-quote", {
+    const response = await fetch("https://keypros-backend.onrender.com/api/quote/submit-quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
