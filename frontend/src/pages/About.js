@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/about.css";
-import aboutImg from "../assets/images/Keypros(1).png"; // Your image path
+import aboutImg from "../assets/images/Keypros(1).png";// Your image path
 import "../styles/customerFeedback.css";
 import { FaStar, FaLightbulb } from "react-icons/fa"; // Import icons
 import profileImg from "../assets/images/Profile.png"; // Replace with actual profile image
