@@ -16,33 +16,38 @@ const QuoteForm = ({ onClose }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
-  e.stopPropagation(); // Prevent any unintended event behavior
+  
+  alert("Submit button clicked!"); // This will show an alert when the button is clicked
+
   setStatus("loading");
 
   try {
-    const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
+    const response = await fetch("https://your-render-api.com/api/quote/submit-quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
     if (response.ok) {
+      alert("Quote request sent successfully!"); // Alert on success
       setStatus("success");
       setTimeout(() => {
-        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
-        onClose(); // Close after animation
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        onClose();
         setStatus("idle");
       }, 2000);
     } else {
+      alert("Failed to send request. Please try again."); // Alert on failure
       setStatus("idle");
     }
   } catch (error) {
-    console.error("Error submitting form:", error);
+    alert(`Error: ${error.message}`); // Alert if there's an error
     setStatus("idle");
   }
 };
+
 
 
   return (
