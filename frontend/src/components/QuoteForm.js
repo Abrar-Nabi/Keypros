@@ -16,39 +16,32 @@ const QuoteForm = ({ onClose }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  alert("Submit button clicked!"); // This will show an alert when the button is clicked
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    setStatus("loading");
 
-  setStatus("loading");
+    try {
+      const response = await fetch("https://keypros-backend.onrender.com/api/quote/submit-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-  try {
-    const response = await fetch("https://keypros-backend.onrender.com/api/quote/submit-quote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert("Quote request sent successfully!"); // Alert on success
-      setStatus("success");
-      setTimeout(() => {
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        onClose();
+      if (response.ok) {
+        setStatus("success");
+        setTimeout(() => {
+          setFormData({ name: "", email: "", phone: "", message: "" });
+          onClose();
+          setStatus("idle");
+        }, 2000);
+      } else {
         setStatus("idle");
-      }, 2000);
-    } else {
-      alert("Failed to send request. Please try again."); // Alert on failure
+      }
+    } catch (error) {
       setStatus("idle");
     }
-  } catch (error) {
-    alert(`Error: ${error.message}`); // Alert if there's an error
-    setStatus("idle");
-  }
-};
-
-
+  };
 
   return (
     <div className="quote-modal">
