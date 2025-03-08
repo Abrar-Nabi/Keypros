@@ -17,30 +17,33 @@ const QuoteForm = ({ onClose }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("loading");
+  e.preventDefault();
+  e.stopPropagation(); // Prevent any unintended event behavior
+  setStatus("loading");
 
-    try {
-      const response = await fetch("https://keypros-backend.onrender.com/api/quote/submit-quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-      if (response.ok) {
-        setStatus("success");
-        setTimeout(() => {
-          setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
-          onClose(); // Close after animation
-          setStatus("idle");
-        }, 2000);
-      } else {
+    if (response.ok) {
+      setStatus("success");
+      setTimeout(() => {
+        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+        onClose(); // Close after animation
         setStatus("idle");
-      }
-    } catch (error) {
+      }, 2000);
+    } else {
       setStatus("idle");
     }
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    setStatus("idle");
+  }
+};
+
 
   return (
     <div className="quote-modal">
