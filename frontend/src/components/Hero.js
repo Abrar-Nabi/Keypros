@@ -30,7 +30,7 @@ const Home = () => {
             Your keys are lost? Don’t panic, we’ve got your back!
           </p>
           <div className="buttons">
-            <a href="tel:+919877424486" className="call-btn">
+            <a href="tel:+61 404-917-555" className="call-btn">
               Call Us
             </a>
             <button className="quote-btn" onClick={() => setShowQuoteForm(true)}>

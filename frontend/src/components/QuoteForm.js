@@ -5,24 +5,23 @@ import { FaCheckCircle } from "react-icons/fa"; // Import checkmark icon
 const QuoteForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    message: "",
+    service: "",
+    otherDetails: "",
   });
 
   const [status, setStatus] = useState("idle"); // 'idle', 'loading', 'success'
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     setStatus("loading");
 
     try {
-      const response = await fetch("https://keypros-backend.onrender.com/api/quote/submit-quote", {
+      const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -31,14 +30,16 @@ const QuoteForm = ({ onClose }) => {
       if (response.ok) {
         setStatus("success");
         setTimeout(() => {
-          setFormData({ name: "", email: "", phone: "", message: "" });
+          setFormData({ name: "", phone: "", service: "", otherDetails: "" });
           onClose();
           setStatus("idle");
         }, 2000);
       } else {
+        alert("Failed to send request. Please try again.");
         setStatus("idle");
       }
     } catch (error) {
+      alert(`Error: ${error.message}`);
       setStatus("idle");
     }
   };
@@ -74,15 +75,6 @@ const QuoteForm = ({ onClose }) => {
               required
             />
             <input
-              type="email"
-              name="email"
-              className="quote-input"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
               type="tel"
               name="phone"
               className="quote-input"
@@ -91,15 +83,37 @@ const QuoteForm = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            <textarea
-              name="message"
-              className="quote-textarea"
-              placeholder="Your Message"
-              value={formData.message}
+            
+            {/* Dropdown for Services */}
+            <select
+              name="service"
+              className="quote-select"
+              value={formData.service}
               onChange={handleChange}
               required
-            />
-            
+            >
+              <option value="">Select a Service</option>
+              <option value="All Key Lost">All Key Lost</option>
+              <option value="Key Fob Replacement">Key Fob Replacement</option>
+              <option value="Copy Key Services">Copy Key Services</option>
+              <option value="Car Lockout Assistance">Car Lockout Assistance</option>
+              <option value="Ignition Lock Replacement">Ignition Lock Replacement</option>
+              <option value="Car Door Lock Replacement">Car Door Lock Replacement</option>
+              <option value="Others">Others</option>
+            </select>
+
+            {/* Input for 'Others' */}
+            {formData.service === "Others" && (
+              <textarea
+                name="otherDetails"
+                className="quote-textarea"
+                placeholder="Please provide details..."
+                value={formData.otherDetails}
+                onChange={handleChange}
+                required
+              />
+            )}
+
             <button type="submit" className="quote-submit-btn" disabled={status === "loading"}>
               {status === "loading" ? "Sending..." : "Submit Request"}
             </button>

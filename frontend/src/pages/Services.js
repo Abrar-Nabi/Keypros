@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/services.css"; // Ensure this file exists
-import QuoteForm from "../components/QuoteForm";  // Import QuoteForm
+import QuoteForm from "../components/QuoteForm"; // Import QuoteForm
 
 const services = [
   {
@@ -37,6 +37,12 @@ const services = [
 
 const Services = () => {
   const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+
+  const handleServiceClick = (serviceTitle) => {
+    setSelectedService(serviceTitle);
+    setShowQuoteForm(true);
+  };
 
   return (
     <section className="services">
@@ -48,7 +54,7 @@ const Services = () => {
             <p className="service-description">{service.description}</p>
             <button
               className="service-btn"
-              onClick={() => setShowQuoteForm(true)}
+              onClick={() => handleServiceClick(service.title)}
             >
               Get
             </button>
@@ -56,7 +62,12 @@ const Services = () => {
         ))}
       </div>
 
-      {showQuoteForm && <QuoteForm onClose={() => setShowQuoteForm(false)} />}
+      {showQuoteForm && (
+        <QuoteForm
+          onClose={() => setShowQuoteForm(false)}
+          selectedService={selectedService}
+        />
+      )}
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/about.css";
-import aboutImg from "../assets/images/Keypros(1).png";// Your image path
+import aboutImg from "../assets/images/Keypros(1).png"; // Your image path
 import "../styles/customerFeedback.css";
 import { FaStar, FaLightbulb } from "react-icons/fa"; // Import icons
 import profileImg from "../assets/images/Profile.png"; // Replace with actual profile image
@@ -60,7 +60,7 @@ const About = () => {
       </div>
 
       <a
-        href="https://www.google.com/search?q=keypro+reviews"
+        href="https://g.page/r/CbHj9U_WOPmwEBE/review"
         target="_blank"
         rel="noopener noreferrer"
         className="write-review-btn"

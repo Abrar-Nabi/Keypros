@@ -85,27 +85,13 @@ h1 {
   display: inline-block;
 }
 
-.quote-btn {
-  background-color: white;
-  color: #ca2026;
-}
+
 
 .call-btn:hover, .quote-btn:hover {
   opacity: 0.8;
 }
 
-/* Quote Form Modal */
-.quote-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 
 
