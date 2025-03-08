@@ -18,7 +18,8 @@ const QuoteForm = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  e.stopPropagation(); // Prevent any unintended event behavior
+  document.activeElement.blur(); // Dismiss keyboard on mobile
+  
   setStatus("loading");
 
   try {
@@ -31,18 +32,18 @@ const QuoteForm = ({ onClose }) => {
     if (response.ok) {
       setStatus("success");
       setTimeout(() => {
-        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
-        onClose(); // Close after animation
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        onClose();
         setStatus("idle");
       }, 2000);
     } else {
       setStatus("idle");
     }
   } catch (error) {
-    console.error("Error submitting form:", error);
     setStatus("idle");
   }
 };
+
 
 
   return (
@@ -102,9 +103,7 @@ const QuoteForm = ({ onClose }) => {
               required
             />
             
-            <button type="submit" disabled={status === "loading"} onTouchStart={(e) => e.preventDefault()}>
-  {status === "loading" ? "Sending..." : "Submit Request"}
-</button>
+  <button type="submit" disabled={status === "loading"}>{status === "loading" ? "Sending..." : "Submit Request"}</button>
 
             <button className="quote-close-btn" type="button" onClick={onClose}>Close</button>
           </form>
