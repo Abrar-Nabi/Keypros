@@ -16,36 +16,34 @@ const QuoteForm = ({ onClose }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent any unintended event behavior
+    setStatus("loading");
   
-  // Force close keyboard
-  document.activeElement.blur(); 
+    try {
+      const response = await fetch("http://localhost:5000/api/quote/submit-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
   
-  setStatus("loading");
-
-  try {
-    const response = await fetch("https://your-render-api.com/api/quote/submit-quote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setStatus("success");
-      setTimeout(() => {
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        onClose();
+      if (response.ok) {
+        setStatus("success");
+        setTimeout(() => {
+          setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+          onClose(); // Close after animation
+          setStatus("idle");
+        }, 2000);
+      } else {
         setStatus("idle");
-      }, 2000);
-    } else {
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
       setStatus("idle");
     }
-  } catch (error) {
-    setStatus("idle");
-  }
-};
-
+  };
+  
 
   return (
     <div className="quote-modal">
