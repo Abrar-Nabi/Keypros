@@ -102,9 +102,10 @@ const QuoteForm = ({ onClose }) => {
               required
             />
             
-            <button type="submit" className="quote-submit-btn" disabled={status === "loading"}>
-              {status === "loading" ? "Sending..." : "Submit Request"}
-            </button>
+            <button type="submit" disabled={status === "loading"} onTouchStart={(e) => e.preventDefault()}>
+  {status === "loading" ? "Sending..." : "Submit Request"}
+</button>
+
             <button className="quote-close-btn" type="button" onClick={onClose}>Close</button>
           </form>
         )}
