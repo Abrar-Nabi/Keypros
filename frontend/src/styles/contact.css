@@ -78,9 +78,7 @@
     transition: 0.3s;
   }
   
-  .social-link-icon:hover {
-    color: #ca2026;
-  }
+
   
   /* Responsive: Single Column on Mobile */
   @media (max-width: 600px) {
