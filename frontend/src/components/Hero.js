@@ -24,7 +24,7 @@ const Home = () => {
             <span className="brand">
               <span className="red-k">K</span>ey Pro’s
             </span>{" "}
-            <span className="subtext">AUTO LOCKSMITH’S</span>
+            <span className="home-subtext ">AUTO LOCKSMITH’S</span>
           </h1>
           <p className="description">
             Your keys are lost? Don’t panic, we’ve got your back!
