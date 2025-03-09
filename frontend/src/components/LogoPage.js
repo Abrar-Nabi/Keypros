@@ -5,7 +5,7 @@ const carBrands = [
   "Aston-Martin", "Audi", "BMW", "Chevrolet", "Ferrari", "Ford", "Hyundai",
   "Isuzu", "Jeep", "kia", "Lamborghini", "Lexus", "maserati", "Mazda", 
   "Mercedes-Benz", "Mitsubishi", "Nissan", "Porsche", "Renault", "Subaru", 
-  "Suzuki", "Tesla", "Toyota", "Volvo"
+  "Suzuki", "Skoda","Tesla", "Toyota", "Volvo"
 ];
 
 const CarBrands = () => {
