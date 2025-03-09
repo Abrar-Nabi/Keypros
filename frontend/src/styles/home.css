@@ -50,7 +50,7 @@ h1 {
   color: #c32026;
 }
 
-.subtext {
+.home-subtext {
   font-size: 14px;
   font-weight: normal;
 }
@@ -118,8 +118,8 @@ h1 {
     font-size: 36px;
   }
 
-  .subtext {
-    font-size: 12px;
+  .home-subtext {
+    font-size: 9px;
   }
 
   .description {
