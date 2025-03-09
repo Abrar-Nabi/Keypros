@@ -4,7 +4,8 @@ import About from "../pages/About";
 import Footer from "../components/Footer";
 import Contact from "./Contact";
 import Services from "./Services";
-// import CustomerFeedback from "./CustomerFeedback";
+import Logopage from "../components/LogoPage";
+
 
 const Home = () => {
   return (
@@ -16,19 +17,20 @@ const Home = () => {
         <About />
       </div>
       <div>
-        <Services/>
+        <Services />
       </div>
-      {/* <div>
-        <CustomerFeedback/>
-             </div> */}
-             <div id="contact">
-              <Contact/>
-             </div>
       <div>
-        <Footer/>
+        <Logopage/>
       </div>
 
-    
+      <div id="contact">
+        <Contact />
+      </div>
+      <div>
+        <Footer />
+      </div>
+
+
     </>
   );
 };

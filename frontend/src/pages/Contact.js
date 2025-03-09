@@ -21,7 +21,7 @@ const Contact = () => {
           </div>
 
           {/* Email */}
-          <div className="contact-item-box">
+          {/* <div className="contact-item-box">
             <div className="contact-icon">
               <FaEnvelope />
             </div>
@@ -29,7 +29,7 @@ const Contact = () => {
               <h3>Email</h3>
               <p>info@example.com</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Address */}
           <div className="contact-item-box">
@@ -53,12 +53,12 @@ const Contact = () => {
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                   <FaFacebook className="social-link-icon" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                   <FaTwitter className="social-link-icon" />
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="social-link-icon" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
