@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import { Link } from "react-scroll"; // Use Link from react-scroll
-import "../styles/footer.css"; // Ensure this file exists for styling
+import { Link } from "react-scroll";
+import "../styles/footer.css"; 
 
 const Footer = () => {
   return (
@@ -26,6 +26,15 @@ const Footer = () => {
             <FaTwitter className="social-icon" />
           </a> */}
         </div>
+      </div>
+
+      <div className="developer-credit">
+        <p>
+          Design and developed by{" "}
+          <a href="https://abrarulhaq.netlify.app/" target="_blank" rel="noopener noreferrer">
+            Abrar ul Haq
+          </a>
+        </p>
       </div>
     </footer>
   );
